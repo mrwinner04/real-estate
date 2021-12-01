@@ -5,6 +5,7 @@ import com.bigProject.RealEstate.Service.FloorService;
 import com.bigProject.RealEstate.dto.FloorDto;
 import com.bigProject.RealEstate.model.Floor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,5 +40,11 @@ public class FloorController {
         Floor floor = floorConverter.toFloor(floorDto);
         Floor savedFloor = floorService.save(floor);
         return ResponseEntity.ok(floorConverter.toFloorDto(savedFloor));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> delete(@PathVariable Long id) {
+        floorService.delete(id);
+        return ResponseEntity.ok().build();
     }
 }
