@@ -24,4 +24,9 @@ public class Neighborhood {
     @Column(nullable = false, unique = true)
     @NotNull
     private String name;
+
+
+    @JoinColumn(name = "city_id")
+    @ManyToMany
+    private City city;
 }

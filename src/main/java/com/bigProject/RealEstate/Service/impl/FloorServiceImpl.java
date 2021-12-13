@@ -27,7 +27,7 @@ public class FloorServiceImpl implements FloorService {
 
     public Floor findById(Long id) {
         return floorRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(String.format("Floor with id %d does not exist", id)));
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Floor with id %d does not exist", id), id));
     }
 
     @Override
